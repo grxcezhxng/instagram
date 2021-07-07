@@ -91,29 +91,52 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="500" id="nnb-Lc-B7w" customClass="PostCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="500"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="nnb-Lc-B7w" customClass="PostCell">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="459.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nnb-Lc-B7w" id="REn-to-zMB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="459.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6W0-cC-ydD">
-                                                    <rect key="frame" x="20" y="11" width="374" height="299"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6W0-cC-ydD" customClass="PFImageView">
+                                                    <rect key="frame" x="57" y="70" width="300" height="300"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="4qZ-dd-hpa"/>
+                                                        <constraint firstAttribute="height" constant="300" id="qdW-7P-9QE"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-Hm-uHr">
-                                                    <rect key="frame" x="20" y="343" width="374" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lanna White" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeY-gZ-fbO">
+                                                    <rect key="frame" x="32" y="31" width="350" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you’ve got a sizable and loyal audience, you can use emojis to leave Easter eggs in your Instagram captions" textAlignment="natural" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-Hm-uHr">
+                                                    <rect key="frame" x="32" y="390" width="350" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CeY-gZ-fbO" firstAttribute="centerX" secondItem="REn-to-zMB" secondAttribute="centerX" id="1m2-M2-IOA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uRw-Hm-uHr" secondAttribute="trailing" constant="12" id="6en-mc-4o8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6W0-cC-ydD" secondAttribute="trailing" constant="37" id="DcT-aO-HyA"/>
+                                                <constraint firstItem="CeY-gZ-fbO" firstAttribute="top" secondItem="REn-to-zMB" secondAttribute="topMargin" constant="20" id="J4d-Ph-VHD"/>
+                                                <constraint firstItem="uRw-Hm-uHr" firstAttribute="top" secondItem="6W0-cC-ydD" secondAttribute="bottom" constant="20" id="SdI-it-eox"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CeY-gZ-fbO" secondAttribute="trailing" constant="12" id="Wol-f0-Z7h"/>
+                                                <constraint firstItem="CeY-gZ-fbO" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="12" id="YjG-jU-N59"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="centerX" secondItem="REn-to-zMB" secondAttribute="centerX" id="Ypi-7T-vMM"/>
+                                                <constraint firstItem="uRw-Hm-uHr" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="12" id="cCw-fa-qV8"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="37" id="moC-Ek-LUR"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uRw-Hm-uHr" secondAttribute="bottom" constant="15" id="srV-IS-a6t"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="top" secondItem="CeY-gZ-fbO" secondAttribute="bottom" constant="15" id="zsT-YC-lkz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="authorLabel" destination="CeY-gZ-fbO" id="nSe-rL-xLA"/>
                                             <outlet property="captionLabel" destination="uRw-Hm-uHr" id="hBB-Zk-qFn"/>
-                                            <outlet property="imageView" destination="6W0-cC-ydD" id="x8e-AV-lTz"/>
+                                            <outlet property="imageView" destination="6W0-cC-ydD" id="iWJ-ga-Dxw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

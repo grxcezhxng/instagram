@@ -30,15 +30,19 @@
 
 - (void)fetchFeed {
     // construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query whereKey:@"likesCount" greaterThan:@100];
-    query.limit = 20;
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Post"];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"caption"];
+    [postQuery includeKey:@"image"];
+    postQuery.limit = 20;
 
     // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
             [self.tableView reloadData];
+            NSLog(@"Works");
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -72,7 +76,7 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.arrayOfPosts[indexPath.row];
     cell.post = post;
-    [cell setCellData:post];
+    [cell setCellData];
     return cell;
 }
 

@@ -15,12 +15,12 @@
     // Initialization code
 }
 
-- (void)setCellData:(Post *)post {
-//    self.captionLabel.text = post.caption;
-    self.captionLabel.text = @"ABCs";
-    // Configure the view for the selected state
+- (void)setCellData {
+   _post = self.post;
+    self.imageView.file = self.post[@"image"];
+    [self.imageView loadInBackground];
+    self.captionLabel.text = self.post[@"caption"];
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
