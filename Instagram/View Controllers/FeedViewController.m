@@ -28,7 +28,10 @@
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [[UIApplication sharedApplication].keyWindow setRootViewController:loginViewController];
     }];
-    
+}
+
+- (IBAction)handleCompose:(id)sender {
+    [self performSegueWithIdentifier:@"composeSegue" sender:nil];
 }
 
 /*
