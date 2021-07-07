@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (IBAction)handleSignup:(id)sender {
@@ -86,6 +88,12 @@
     
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
     }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    return YES;
 }
 
 /*

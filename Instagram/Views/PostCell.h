@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
+- (void)setCellData:(Post *)post;
+
 @end
 
 NS_ASSUME_NONNULL_END

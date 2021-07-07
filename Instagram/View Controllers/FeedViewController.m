@@ -25,6 +25,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self fetchFeed];
+    [self.tableView reloadData];
 }
 
 - (void)fetchFeed {
@@ -36,7 +37,8 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            // do something with the array of object returned by the call
+            self.arrayOfPosts = posts;
+            [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -68,6 +70,9 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    Post *post = self.arrayOfPosts[indexPath.row];
+    cell.post = post;
+    [cell setCellData:post];
     return cell;
 }
 
