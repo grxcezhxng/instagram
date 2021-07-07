@@ -19,6 +19,7 @@
    _post = self.post;
     self.imageView.file = self.post[@"image"];
     [self.imageView loadInBackground];
+//    self.imageView.file = "insta_camera_btn.png";
     self.captionLabel.text = self.post[@"caption"];
 }
 

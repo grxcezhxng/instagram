@@ -81,28 +81,28 @@
         <!--Feed View Controller-->
         <scene sceneID="nL8-A6-bJb">
             <objects>
-                <viewController id="bPb-k6-xwe" customClass="FeedViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="bPb-k6-xwe" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XTB-Xu-zFb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uXt-4N-TeV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="524" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uXt-4N-TeV">
                                 <rect key="frame" x="0.0" y="56" width="414" height="772"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="nnb-Lc-B7w" customClass="PostCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="459.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="524" id="nnb-Lc-B7w" customClass="PostCell">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="524"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nnb-Lc-B7w" id="REn-to-zMB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="459.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="524"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6W0-cC-ydD" customClass="PFImageView">
-                                                    <rect key="frame" x="57" y="70" width="300" height="300"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="6W0-cC-ydD" customClass="PFImageView">
+                                                    <rect key="frame" x="32" y="70" width="350" height="350"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="300" id="4qZ-dd-hpa"/>
-                                                        <constraint firstAttribute="height" constant="300" id="qdW-7P-9QE"/>
+                                                        <constraint firstAttribute="height" constant="350" id="gUj-ff-89A"/>
+                                                        <constraint firstAttribute="width" constant="350" id="guz-is-mbJ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lanna White" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeY-gZ-fbO">
@@ -112,7 +112,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you’ve got a sizable and loyal audience, you can use emojis to leave Easter eggs in your Instagram captions" textAlignment="natural" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-Hm-uHr">
-                                                    <rect key="frame" x="32" y="390" width="350" height="43"/>
+                                                    <rect key="frame" x="32" y="440" width="350" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -121,16 +121,15 @@
                                             <constraints>
                                                 <constraint firstItem="CeY-gZ-fbO" firstAttribute="centerX" secondItem="REn-to-zMB" secondAttribute="centerX" id="1m2-M2-IOA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="uRw-Hm-uHr" secondAttribute="trailing" constant="12" id="6en-mc-4o8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6W0-cC-ydD" secondAttribute="trailing" constant="37" id="DcT-aO-HyA"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="centerX" secondItem="REn-to-zMB" secondAttribute="centerX" id="7ez-5n-hJZ"/>
                                                 <constraint firstItem="CeY-gZ-fbO" firstAttribute="top" secondItem="REn-to-zMB" secondAttribute="topMargin" constant="20" id="J4d-Ph-VHD"/>
-                                                <constraint firstItem="uRw-Hm-uHr" firstAttribute="top" secondItem="6W0-cC-ydD" secondAttribute="bottom" constant="20" id="SdI-it-eox"/>
+                                                <constraint firstItem="uRw-Hm-uHr" firstAttribute="top" secondItem="6W0-cC-ydD" secondAttribute="bottom" constant="20" id="K3m-sk-ECG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CeY-gZ-fbO" secondAttribute="trailing" constant="12" id="Wol-f0-Z7h"/>
                                                 <constraint firstItem="CeY-gZ-fbO" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="12" id="YjG-jU-N59"/>
-                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="centerX" secondItem="REn-to-zMB" secondAttribute="centerX" id="Ypi-7T-vMM"/>
                                                 <constraint firstItem="uRw-Hm-uHr" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="12" id="cCw-fa-qV8"/>
-                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="leading" secondItem="REn-to-zMB" secondAttribute="leadingMargin" constant="37" id="moC-Ek-LUR"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="top" secondItem="CeY-gZ-fbO" secondAttribute="bottom" constant="15" id="lEA-bt-fAk"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uRw-Hm-uHr" secondAttribute="bottom" constant="15" id="srV-IS-a6t"/>
-                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="top" secondItem="CeY-gZ-fbO" secondAttribute="bottom" constant="15" id="zsT-YC-lkz"/>
+                                                <constraint firstItem="6W0-cC-ydD" firstAttribute="leading" secondItem="CeY-gZ-fbO" secondAttribute="leading" id="vbb-QH-wwC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -154,7 +153,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="XdP-Oo-5VZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q5y-pL-xQv">
-                                <rect key="frame" x="315" y="15.5" width="79" height="25"/>
+                                <rect key="frame" x="315" y="9.5" width="79" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="insta_camera_btn"/>
                                 <connections>
@@ -243,10 +242,10 @@
         <!--Navigation Controller-->
         <scene sceneID="Nax-xt-btQ">
             <objects>
-                <navigationController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" id="uYv-YD-vuX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="uYv-YD-vuX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z6L-38-YYT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

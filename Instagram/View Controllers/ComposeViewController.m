@@ -45,7 +45,7 @@
     
     // Do something with the images (based on your use case)
     self.imageView.backgroundColor = UIColor.whiteColor;
-    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(180, 180)];
+    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(350, 350)];
     self.imageView.image = resizedImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
