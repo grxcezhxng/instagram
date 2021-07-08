@@ -12,25 +12,17 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setCellData {
-   _post = self.post;
+    _post = self.post;
     self.imageView.file = self.post[@"image"];
     self.imageView.layer.cornerRadius = 5;
     [self.imageView loadInBackground];
     self.profilePhoto.layer.cornerRadius = 25;
-//    PFFileObject *proPic = [user valueForKey:@"proPic"];
     self.captionLabel.text = self.post[@"caption"];
     PFUser *author = self.post[@"author"];
     self.authorLabel.text = author.username;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

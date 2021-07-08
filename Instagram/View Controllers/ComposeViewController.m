@@ -39,16 +39,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    // Do something with the images (based on your use case)
     self.imageView.backgroundColor = UIColor.whiteColor;
     UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(350, 350)];
     self.imageView.image = resizedImage;
     
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

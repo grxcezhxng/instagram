@@ -38,14 +38,10 @@
 }
 
 - (void)registerUser {
-    // initialize a user object
     PFUser *newUser = [PFUser user];
-    
-    // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
-    // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
@@ -72,20 +68,12 @@
 
 - (void) showErrorAlert {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Username or password field can not be empty" preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    // create a cancel action
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { // handle cancel response here. Doing nothing will dismiss the view.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
-    // add the cancel action to the alertController
     [alert addAction:cancelAction];
-    // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-        
     }];
-    // add the OK action to the alert controller
     [alert addAction:okAction];
-    
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
     }];
 }
@@ -95,15 +83,5 @@
     [self.passwordField resignFirstResponder];
     return YES;
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -34,21 +34,10 @@
     self.usernameLabel.text = author.username;
     
     NSDate *date = self.post.createdAt;
-       // Create a date formatter to properly reformat the provided timeStamp into readable date
-       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-       [dateFormatter setDateFormat:@"MM-dd-yyyy"];
-       NSString *dateString = [dateFormatter stringFromDate:date];
-       self.timeLabel.text = dateString;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    self.timeLabel.text = dateString;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -17,19 +17,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-
-            configuration.applicationId = @"dxFdo0QOTCQ0ZWnIYS190fiidQHvvR1juBpTQn4q"; //
-            configuration.clientKey = @"a9YuIMR7jIQjNG30V3MDvRRc6G1uhxBHM8Z4ZVPB"; // <- UPDATE
-            configuration.server = @"https://parseapi.back4app.com";
-        }];
-
-    [Parse initializeWithConfiguration:config];
+        
+        configuration.applicationId = @"dxFdo0QOTCQ0ZWnIYS190fiidQHvvR1juBpTQn4q";
+        configuration.clientKey = @"a9YuIMR7jIQjNG30V3MDvRRc6G1uhxBHM8Z4ZVPB";
+        configuration.server = @"https://parseapi.back4app.com";
+    }];
     
+    [Parse initializeWithConfiguration:config];
     return YES;
 }
 
 #pragma mark - UISceneSession lifecycle
-
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
@@ -43,6 +41,5 @@
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
-
 
 @end

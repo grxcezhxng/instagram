@@ -30,19 +30,16 @@
     [self.tableView insertSubview:refreshControl atIndex:0];
     [self fetchFeed];
     [self.tableView reloadData];
-
 }
 
 - (void)fetchFeed {
-    // construct query
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Post"];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     [postQuery includeKey:@"caption"];
     [postQuery includeKey:@"image"];
     postQuery.limit = 20;
-
-    // fetch data asynchronously
+    
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
@@ -56,7 +53,6 @@
 
 - (IBAction)handleLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        //        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication].delegate;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [[UIApplication sharedApplication].keyWindow setRootViewController:loginViewController];
@@ -83,41 +79,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-// Makes a network request to get updated data
-  // Updates the tableView with the new data
-  // Hides the RefreshControl
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
-
-        // Create NSURL and NSURLRequest
-
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                                              delegate:nil
-                                                         delegateQueue:[NSOperationQueue mainQueue]];
-        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    
-    // ... Use the new data to update the data source ...
-     [self fetchFeed];
-
-    // Reload the tableView now that there is new data
-     [self.tableView reloadData];
-
-    // Tell the refreshControl to stop spinning
-     [refreshControl endRefreshing];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                          delegate:nil
+                                                     delegateQueue:[NSOperationQueue mainQueue]];
+    session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    [self fetchFeed];
+    [self.tableView reloadData];
+    [refreshControl endRefreshing];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[DetailViewController class] ]){
-            // Get clicked cell and corresponding post to send to DetailsViewController
-        NSLog(@"Nav");
         UITableViewCell *tappedCell = sender;
-            NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-            Post *post = self.arrayOfPosts[indexPath.row];
-            DetailViewController *detailsViewController = [segue destinationViewController];
-            detailsViewController.post = post;
-        }
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.arrayOfPosts[indexPath.row];
+        DetailViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
 }
-
 
 @end
