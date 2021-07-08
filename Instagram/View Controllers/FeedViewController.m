@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DetailViewController.h"
 #import "PostCell.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -66,16 +67,6 @@
     [self performSegueWithIdentifier:@"composeSegue" sender:nil];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.arrayOfPosts[indexPath.row];
@@ -112,6 +103,20 @@
 
     // Tell the refreshControl to stop spinning
      [refreshControl endRefreshing];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[DetailViewController class] ]){
+            // Get clicked cell and corresponding post to send to DetailsViewController
+        NSLog(@"Nav");
+        UITableViewCell *tappedCell = sender;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+            Post *post = self.arrayOfPosts[indexPath.row];
+            DetailViewController *detailsViewController = [segue destinationViewController];
+            detailsViewController.post = post;
+        }
 }
 
 
