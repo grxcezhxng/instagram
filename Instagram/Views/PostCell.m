@@ -18,9 +18,13 @@
 - (void)setCellData {
    _post = self.post;
     self.imageView.file = self.post[@"image"];
+    self.imageView.layer.cornerRadius = 5;
     [self.imageView loadInBackground];
-//    self.imageView.file = "insta_camera_btn.png";
+    self.profilePhoto.layer.cornerRadius = 25;
+//    PFFileObject *proPic = [user valueForKey:@"proPic"];
     self.captionLabel.text = self.post[@"caption"];
+    PFUser *author = self.post[@"author"];
+    self.authorLabel.text = author.username;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

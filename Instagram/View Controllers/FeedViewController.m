@@ -24,8 +24,12 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
     [self fetchFeed];
     [self.tableView reloadData];
+
 }
 
 - (void)fetchFeed {
@@ -83,5 +87,32 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfPosts.count;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+// Makes a network request to get updated data
+  // Updates the tableView with the new data
+  // Hides the RefreshControl
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+
+        // Create NSURL and NSURLRequest
+
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                              delegate:nil
+                                                         delegateQueue:[NSOperationQueue mainQueue]];
+        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+    // ... Use the new data to update the data source ...
+     [self fetchFeed];
+
+    // Reload the tableView now that there is new data
+     [self.tableView reloadData];
+
+    // Tell the refreshControl to stop spinning
+     [refreshControl endRefreshing];
+}
+
 
 @end
