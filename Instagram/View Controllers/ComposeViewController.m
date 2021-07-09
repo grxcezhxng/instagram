@@ -72,6 +72,7 @@
             NSLog(@"error: %@", error);
         }
     }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)handleCancel:(id)sender {

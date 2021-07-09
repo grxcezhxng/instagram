@@ -156,14 +156,14 @@
                         <color key="tintColor" systemColor="linkColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="M38-Wt-2We">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4dU-ze-6n9">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" width="50" id="4dU-ze-6n9">
                             <connections>
                                 <action selector="handleLogout:" destination="bPb-k6-xwe" id="j8e-jC-wgw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="XdP-Oo-5VZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q5y-pL-xQv">
-                                <rect key="frame" x="315" y="15.5" width="79" height="25"/>
+                                <rect key="frame" x="315" y="15.5" width="36" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="insta_camera_btn"/>
                                 <connections>
@@ -350,22 +350,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uvt-i3-Q0w">
-                                <rect key="frame" x="214" y="56" width="200" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uvt-i3-Q0w">
+                                <rect key="frame" x="0.0" y="56" width="414" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="34t-du-1Te"/>
-                                    <constraint firstAttribute="height" constant="200" id="cEN-OX-4tT"/>
+                                    <constraint firstAttribute="width" constant="414" id="ZQm-pY-W7P"/>
+                                    <constraint firstAttribute="height" constant="400" id="hK9-dh-pug"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ezv-ba-8lt" appends="YES" id="hpY-d0-Jhe"/>
                                 </connections>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Start writing your caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nrh-bI-kuf">
-                                <rect key="frame" x="6" y="56" width="210" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nrh-bI-kuf">
+                                <rect key="frame" x="5" y="476" width="414" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="sDJ-eP-rWf"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -374,15 +376,21 @@
                         <viewLayoutGuide key="safeArea" id="nI7-gO-MKG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uvt-i3-Q0w" firstAttribute="top" secondItem="nI7-gO-MKG" secondAttribute="top" id="rxG-Oa-ng9"/>
-                            <constraint firstItem="uvt-i3-Q0w" firstAttribute="trailing" secondItem="nI7-gO-MKG" secondAttribute="trailing" id="yhQ-pl-HNU"/>
+                            <constraint firstItem="uvt-i3-Q0w" firstAttribute="top" secondItem="nI7-gO-MKG" secondAttribute="top" id="BIL-iu-FZf"/>
+                            <constraint firstItem="uvt-i3-Q0w" firstAttribute="leading" secondItem="nI7-gO-MKG" secondAttribute="leading" id="CWN-gl-kVq"/>
+                            <constraint firstItem="Nrh-bI-kuf" firstAttribute="trailing" secondItem="nI7-gO-MKG" secondAttribute="trailing" constant="5" id="EgI-FE-lAu"/>
+                            <constraint firstItem="Nrh-bI-kuf" firstAttribute="top" secondItem="uvt-i3-Q0w" secondAttribute="bottom" constant="20" id="IVq-A8-fAY"/>
+                            <constraint firstItem="Nrh-bI-kuf" firstAttribute="leading" secondItem="nI7-gO-MKG" secondAttribute="leading" constant="5" id="SNO-KM-QIm"/>
+                            <constraint firstItem="nI7-gO-MKG" firstAttribute="trailing" secondItem="uvt-i3-Q0w" secondAttribute="trailing" id="TLv-Zu-HG7"/>
+                            <constraint firstItem="uvt-i3-Q0w" firstAttribute="centerX" secondItem="14G-6R-1ic" secondAttribute="centerX" id="eWv-wZ-O4O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bJg-6N-hyk">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="NJ0-Fp-2WE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Q8s-u6-GiJ">
-                                <rect key="frame" x="20" y="13" width="92" height="30"/>
+                                <rect key="frame" x="20" y="13" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="handleCancel:" destination="qT0-qT-nce" eventType="touchUpInside" id="p8K-Vd-OdL"/>
@@ -391,8 +399,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="RXL-WQ-HoT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="eGn-rY-L5P">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <rect key="frame" x="302" y="13" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Share"/>
                                 <connections>
                                     <action selector="handlePost:" destination="qT0-qT-nce" eventType="touchUpInside" id="ih0-lf-Kju"/>
@@ -412,13 +421,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2736" y="68"/>
+            <point key="canvasLocation" x="2734.7826086956525" y="67.633928571428569"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Nax-xt-btQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="uYv-YD-vuX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="lDX-oH-Taa"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" selectedImage="feed_tab" id="lDX-oH-Taa"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DgY-Vy-cU0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z6L-38-YYT">
@@ -438,7 +447,7 @@
         <scene sceneID="ubl-JY-4PS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Op1-Fe-S8a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="B3X-z9-Qgn"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" selectedImage="profile_tab" id="B3X-z9-Qgn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="56S-G1-STz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -455,9 +464,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profilePicture" width="470" height="470"/>
+        <image name="profile_tab" width="25" height="25"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
