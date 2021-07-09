@@ -28,19 +28,19 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self fetchFeed];
-    [self.tableView reloadData];
 }
 
 - (void)fetchFeed {
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Post"];
     [postQuery orderByDescending:@"createdAt"];
-    [postQuery includeKey:@"author"];
-    [postQuery includeKey:@"caption"];
-    [postQuery includeKey:@"image"];
-    [postQuery includeKey:@"user"];
+    [postQuery includeKey:@"author"]; // pointers
     postQuery.limit = 20;
-    
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
@@ -66,10 +66,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.arrayOfPosts[indexPath.row];
-    User *user = post.user;
-    NSLog(@"Feed %@", user);
     cell.post = post;
-    cell.user = user;
     [cell setCellData];
     return cell;
 }

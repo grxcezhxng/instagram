@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
-#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,14 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) PFUser *author;
-@property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSNumber *likeCount;
 @property (nonatomic, strong) NSNumber *commentCount;
 @property (nonatomic, strong) NSDate *createdAt;
 
-+ (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withUser: (User *)user withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

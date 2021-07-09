@@ -6,8 +6,8 @@
 //
 
 #import "ProfileViewController.h"
-#import "User.h"
 #import <Parse/PFImageView.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchUser];
     [self renderView];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -28,24 +27,6 @@
     
     
     self.profilePhoto.userInteractionEnabled = YES;
-}
-
-- (void) fetchUser {
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
-    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userQuery includeKey:@"username"];
-    [userQuery includeKey:@"profilePhoto"];
-    userQuery.limit = 1;
-    
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-        if (users != nil) {
-            self.user = users[0];
-            NSLog(@"%@", self.user);
-            [self renderView];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -96,22 +77,20 @@
     UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(100, 100)];
     self.profilePhoto.image = resizedImage;
     
-    self.usernameLabel.text  = self.user[@"username"];
+    self.usernameLabel.text  = PFUser.currentUser[@"username"];
     self.profilePhoto.layer.cornerRadius = 50;
     
     UIImage *latestPhoto = [self resizeImage:self.profilePhoto.image withSize:CGSizeMake(100, 100)];
-    self.user.profilePhoto = [self getPFFileFromImage:latestPhoto];
-    NSLog(@"Profile photo %@", self.user.profilePhoto);
-    NSURL * imageURL = [NSURL URLWithString:self.user.profilePhoto.url];
-    NSLog(@"Profile page photo link %@", imageURL);
-    [self.profilePhoto loadInBackground];
-    
-    // [[PFUser currentUser] setObject:<#(nonnull id)#> forKey:@"profilePhtoto"];
     
     
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    // save new profile photo for user
+    NSData *imageData = UIImagePNGRepresentation(latestPhoto);
+    PFFileObject *file = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+    [PFUser.currentUser setObject:file forKey:@"profilePhoto"];
+    
+    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded) {
-            NSLog(@"succeeded %@", imageURL);
+            NSLog(@"succeeded %@");
         }
         else {
             NSLog(@"error: %@", error);
@@ -123,16 +102,15 @@
 }
 
 - (void) renderView {
-    self.usernameLabel.text  = self.user[@"username"];
+    self.usernameLabel.text  = PFUser.currentUser.username;
     self.profilePhoto.layer.cornerRadius = 50;
     
-    UIImage *latestPhoto = [self resizeImage:self.profilePhoto.image withSize:CGSizeMake(100, 100)];
-    self.user.profilePhoto = [self getPFFileFromImage:latestPhoto];
-    NSLog(@"Profile photo %@", self.user.profilePhoto);
-    NSURL * imageURL = [NSURL URLWithString:self.user.profilePhoto.url];
-    NSLog(@"Profile page photo link %@", imageURL);
-    [self.profilePhoto loadInBackground];
-    [self.user saveInBackgroundWithBlock:nil];
+    // display new profile photo
+    if(PFUser.currentUser[@"profilePhoto"]) {
+        PFFileObject *file = PFUser.currentUser[@"profilePhoto"];
+        NSURL *url = [NSURL URLWithString: file.url];
+        [self.profilePhoto setImageWithURL:url];
+    }
 }
 
 /*

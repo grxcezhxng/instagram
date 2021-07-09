@@ -8,7 +8,6 @@
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
-#import "User.h"
 
 @interface LoginViewController ()
 
@@ -50,7 +49,10 @@
         } else {
             NSLog(@"User registered successfully");
             
-            [User postNewUser:[PFUser currentUser] withImage:[UIImage imageNamed:@"image_placeholder.png"] withUsername:[PFUser currentUser].username withCompletion:nil];
+            // go to TabBarController
+            SceneDelegate *delegate = (SceneDelegate *) self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            delegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
         }
     }];
 }
