@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self fetchUser];
     self.imageView.userInteractionEnabled = YES;
 }
 
@@ -63,8 +64,25 @@
     return newImage;
 }
 
+- (void) fetchUser {
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userQuery includeKey:@"username"];
+    [userQuery includeKey:@"profilePhoto"];
+    userQuery.limit = 1;
+    
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+        if (users != nil) {
+            self.user = users[0];
+            NSLog(@"Compose User Works");
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)handlePost:(id)sender {
-    [Post postUserImage:self.imageView.image withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError *error) {
+    [Post postUserImage:self.imageView.image withCaption:self.captionField.text withUser:self.user withCompletion:^(BOOL succeeded, NSError *error) {
         if (succeeded){
             NSLog(@"Posted successfully");
             [self dismissViewControllerAnimated:true completion:nil];

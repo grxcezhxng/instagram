@@ -6,7 +6,9 @@
 //
 
 #import "LoginViewController.h"
+#import "SceneDelegate.h"
 #import "Parse/Parse.h"
+#import "User.h"
 
 @interface LoginViewController ()
 
@@ -47,7 +49,8 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            
+            [User postNewUser:[PFUser currentUser] withImage:[UIImage imageNamed:@"image_placeholder.png"] withUsername:[PFUser currentUser].username withCompletion:nil];
         }
     }];
 }
@@ -61,7 +64,9 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            SceneDelegate *delegate = (SceneDelegate *) self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            delegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
         }
     }];
 }

@@ -1,8 +1,8 @@
 //
-//  ComposeViewController.h
+//  ProfileViewController.h
 //  Instagram
 //
-//  Created by gracezhg on 7/6/21.
+//  Created by gracezhg on 7/9/21.
 //
 
 #import <UIKit/UIKit.h>
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ComposeViewController : UIViewController
+@interface ProfileViewController : UIViewController
 
 @property (strong, nonatomic) User *user;
 

@@ -12,6 +12,7 @@
 @dynamic postID;
 @dynamic userID;
 @dynamic author;
+@dynamic user;
 @dynamic caption;
 @dynamic image;
 @dynamic likeCount;
@@ -22,11 +23,12 @@
     return @"Post";
 }
 
-+ (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withUser: (User *)user withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
     newPost.author = [PFUser currentUser];
+    newPost.user = user;
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);

@@ -38,13 +38,13 @@
     [postQuery includeKey:@"author"];
     [postQuery includeKey:@"caption"];
     [postQuery includeKey:@"image"];
+    [postQuery includeKey:@"user"];
     postQuery.limit = 20;
     
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
             [self.tableView reloadData];
-            NSLog(@"Works");
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -66,7 +66,10 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.arrayOfPosts[indexPath.row];
+    User *user = post.user;
+    NSLog(@"Feed %@", user);
     cell.post = post;
+    cell.user = user;
     [cell setCellData];
     return cell;
 }
