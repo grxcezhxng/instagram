@@ -17,16 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-2g-W7h">
-                                <rect key="frame" x="97" y="400" width="220" height="96"/>
+                                <rect key="frame" x="97" y="300" width="220" height="96"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="insta_camera_btn" translatesAutoresizingMaskIntoConstraints="NO" id="zJ0-Qa-NCP">
+                                <rect key="frame" x="132" y="436" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Pko-fa-kAK"/>
+                                    <constraint firstAttribute="width" constant="150" id="udh-ZV-Lhr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xiD-2g-W7h" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="8Ru-lB-T1A"/>
+                            <constraint firstItem="zJ0-Qa-NCP" firstAttribute="top" secondItem="xiD-2g-W7h" secondAttribute="bottom" constant="40" id="00R-af-PKM"/>
+                            <constraint firstItem="xiD-2g-W7h" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-100" id="8Ru-lB-T1A"/>
+                            <constraint firstItem="zJ0-Qa-NCP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Abp-SV-400"/>
                             <constraint firstItem="xiD-2g-W7h" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DSr-vw-FBA"/>
                         </constraints>
                     </view>
@@ -37,6 +46,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
