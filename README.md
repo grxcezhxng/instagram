@@ -47,12 +47,19 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 Signed In 
+
+
 <img src="signedIn.Gif">
 
 New User
+
+
+
 <img src="NotSignedIn.gif">
 
 Camera
+
+
 <img src="Camera.gif">
 
 ## Credits
