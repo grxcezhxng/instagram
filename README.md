@@ -46,9 +46,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Signed In 
+<img src="signedIn.gif">
 
-GIF created with [Kap](https://getkap.co/).
+New User
+<img src="NotSignedIn.gif">
+
+Camera
+<img src="Camera.gif">
 
 ## Credits
 
