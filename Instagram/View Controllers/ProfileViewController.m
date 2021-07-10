@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet PFImageView *profilePhoto;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *arrayOfPosts;
+@property (weak, nonatomic) IBOutlet UILabel *postCountLabel;
+
 
 @end
 
@@ -51,6 +53,7 @@
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
+            self.postCountLabel.text = [NSString stringWithFormat:@"%i", self.arrayOfPosts.count];
             [self.collectionView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);

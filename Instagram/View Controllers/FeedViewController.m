@@ -68,6 +68,7 @@
     Post *post = self.arrayOfPosts[indexPath.row];
     cell.post = post;
     [cell setCellData];
+    [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 
