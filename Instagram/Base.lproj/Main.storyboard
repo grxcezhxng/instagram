@@ -401,12 +401,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB6-iF-UuJ">
-                                <rect key="frame" x="15" y="530" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TVa-Kn-Sih"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -420,18 +414,15 @@
                             <constraint firstItem="TVa-Kn-Sih" firstAttribute="trailing" secondItem="t8E-4O-hnE" secondAttribute="trailing" constant="15" id="IcA-NG-Q5d"/>
                             <constraint firstItem="9jY-Ag-9Vs" firstAttribute="leading" secondItem="TVa-Kn-Sih" secondAttribute="leading" constant="15" id="J5D-Wx-uls"/>
                             <constraint firstItem="qqN-wx-LTN" firstAttribute="leading" secondItem="9jY-Ag-9Vs" secondAttribute="trailing" constant="12" id="K4Q-Nm-Az6"/>
-                            <constraint firstItem="pB6-iF-UuJ" firstAttribute="top" secondItem="vQk-gT-QDk" secondAttribute="bottom" constant="20" id="OFs-kU-Qkg"/>
                             <constraint firstItem="9jY-Ag-9Vs" firstAttribute="top" secondItem="TVa-Kn-Sih" secondAttribute="top" constant="30" id="PXo-LR-FHy"/>
                             <constraint firstItem="t8E-4O-hnE" firstAttribute="top" secondItem="vQk-gT-QDk" secondAttribute="bottom" constant="55" id="Qbv-8p-cZH"/>
                             <constraint firstItem="ymW-BO-46f" firstAttribute="top" secondItem="vQk-gT-QDk" secondAttribute="bottom" constant="20" id="XKf-bc-8II"/>
-                            <constraint firstItem="pB6-iF-UuJ" firstAttribute="leading" secondItem="TVa-Kn-Sih" secondAttribute="leading" constant="15" id="cOf-Rg-EDe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="edS-Zt-XBA"/>
                     <connections>
                         <outlet property="captionLabel" destination="t8E-4O-hnE" id="cRW-Nf-D86"/>
                         <outlet property="imageView" destination="vQk-gT-QDk" id="kRq-yP-yFF"/>
-                        <outlet property="likesLabel" destination="pB6-iF-UuJ" id="noc-jg-vvs"/>
                         <outlet property="profilePhoto" destination="9jY-Ag-9Vs" id="rjT-jl-ZMs"/>
                         <outlet property="timeLabel" destination="ymW-BO-46f" id="b3I-CM-g7w"/>
                         <outlet property="usernameLabel" destination="qqN-wx-LTN" id="Mq8-91-QlT"/>
