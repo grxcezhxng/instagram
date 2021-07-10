@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -163,7 +164,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="XdP-Oo-5VZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q5y-pL-xQv">
-                                <rect key="frame" x="315" y="15.5" width="36" height="25"/>
+                                <rect key="frame" x="358" y="15.5" width="36" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="insta_camera_btn"/>
                                 <connections>
@@ -233,6 +234,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QUF-8P-oOg">
+                                <rect key="frame" x="19" y="236" width="376" height="606"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="c3y-MC-hL5">
+                                    <size key="itemSize" width="252" height="252"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostCollectionCell" id="0ay-1a-Jlb" customClass="PostCollectionCell">
+                                        <rect key="frame" x="72" y="0.0" width="232" height="229"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Y6s-kR-Otw">
+                                            <rect key="frame" x="0.0" y="0.0" width="232" height="229"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krl-x9-lGJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="232" height="229"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="krl-x9-lGJ" firstAttribute="top" secondItem="Y6s-kR-Otw" secondAttribute="top" id="L85-Ed-1pl"/>
+                                                <constraint firstAttribute="trailing" secondItem="krl-x9-lGJ" secondAttribute="trailing" id="U0C-j5-d62"/>
+                                                <constraint firstItem="krl-x9-lGJ" firstAttribute="leading" secondItem="Y6s-kR-Otw" secondAttribute="leading" id="nCd-Qu-HTc"/>
+                                                <constraint firstAttribute="bottom" secondItem="krl-x9-lGJ" secondAttribute="bottom" id="yyk-HV-RbD"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="232" height="229"/>
+                                        <connections>
+                                            <outlet property="postView" destination="krl-x9-lGJ" id="UV9-aQ-lu8"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YuK-7G-XMC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -240,14 +276,19 @@
                         <constraints>
                             <constraint firstItem="h6z-VC-x1b" firstAttribute="top" secondItem="YuK-7G-XMC" secondAttribute="top" constant="20" id="0oU-Bq-dy1"/>
                             <constraint firstItem="IWa-CU-Zal" firstAttribute="leading" secondItem="h6z-VC-x1b" secondAttribute="trailing" constant="15" id="7Sy-Me-ZAL"/>
+                            <constraint firstItem="YuK-7G-XMC" firstAttribute="trailing" secondItem="QUF-8P-oOg" secondAttribute="trailing" constant="19" id="QH5-oE-cZd"/>
+                            <constraint firstItem="QUF-8P-oOg" firstAttribute="top" secondItem="h6z-VC-x1b" secondAttribute="bottom" constant="60" id="UMd-VC-zh6"/>
                             <constraint firstItem="IWa-CU-Zal" firstAttribute="centerY" secondItem="h6z-VC-x1b" secondAttribute="centerY" id="YBk-ki-scu"/>
+                            <constraint firstItem="QUF-8P-oOg" firstAttribute="leading" secondItem="YuK-7G-XMC" secondAttribute="leading" constant="19" id="bPa-IB-rtG"/>
                             <constraint firstItem="Xgc-TI-RBP" firstAttribute="centerY" secondItem="h6z-VC-x1b" secondAttribute="centerY" id="hr7-Hl-5oA"/>
                             <constraint firstItem="Xgc-TI-RBP" firstAttribute="leading" secondItem="IWa-CU-Zal" secondAttribute="trailing" id="rB4-Dk-Tjf"/>
+                            <constraint firstAttribute="bottom" secondItem="QUF-8P-oOg" secondAttribute="bottom" id="sXM-zZ-U9f"/>
                             <constraint firstItem="h6z-VC-x1b" firstAttribute="leading" secondItem="YuK-7G-XMC" secondAttribute="leading" constant="20" id="tkC-Jm-zfc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8O9-HZ-0gJ"/>
                     <connections>
+                        <outlet property="collectionView" destination="QUF-8P-oOg" id="MFm-8o-m0L"/>
                         <outlet property="profilePhoto" destination="h6z-VC-x1b" id="cL3-2f-ibk"/>
                         <outlet property="usernameLabel" destination="Xgc-TI-RBP" id="jD7-3h-c3d"/>
                     </connections>
@@ -388,7 +429,7 @@
                     <navigationItem key="navigationItem" id="bJg-6N-hyk">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="NJ0-Fp-2WE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Q8s-u6-GiJ">
-                                <rect key="frame" x="20" y="13" width="50" height="30"/>
+                                <rect key="frame" x="20" y="11" width="56" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Cancel"/>
@@ -399,7 +440,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="RXL-WQ-HoT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="eGn-rY-L5P">
-                                <rect key="frame" x="302" y="13" width="50" height="30"/>
+                                <rect key="frame" x="344" y="11" width="50" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Share"/>

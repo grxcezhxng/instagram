@@ -8,11 +8,15 @@
 #import "ProfileViewController.h"
 #import <Parse/PFImageView.h>
 #import "UIImageView+AFNetworking.h"
+#import "PostCollectionCell.h"
+#import "Post.h"
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate>
+@interface ProfileViewController () <UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profilePhoto;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray *arrayOfPosts;
 
 @end
 
@@ -21,13 +25,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self renderView];
-    
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    
-    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self fetchUserPosts];
     self.profilePhoto.userInteractionEnabled = YES;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.minimumInteritemSpacing = 1;
+    layout.minimumLineSpacing = 1;
+  
+    CGFloat const margin = 24;
+    CGFloat const postersPerLine = 3;
+    CGFloat itemWidth = (self.collectionView.frame.size.width - margin * 2)/postersPerLine ;
+    CGFloat itemHeight = itemWidth;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
+
+
+- (void)fetchUserPosts {
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"Post"];
+    [userQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [userQuery orderByDescending:@"createdAt"];
+    [userQuery includeKey:@"author"]; // pointers
+    userQuery.limit = 30;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.arrayOfPosts = posts;
+            [self.collectionView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.arrayOfPosts.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    PostCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionCell" forIndexPath:indexPath];
+    Post *post = self.arrayOfPosts[indexPath.row];
+    
+    PFFileObject *postFile = post[@"image"];
+    NSURL *postUrl = [NSURL URLWithString: postFile.url];
+    [cell.postView setImageWithURL:postUrl];
+    
+    return cell;
+}
+
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
