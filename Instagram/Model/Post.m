@@ -24,7 +24,7 @@
 
 + (void)postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Post *const newPost = [Post new];
-    newPost.image = [self getPFFileFromImage:image];
+    newPost.image = [self _getPFFileFromImage:image];
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
@@ -34,7 +34,9 @@
     [newPost saveInBackgroundWithBlock: completion];
 }
 
-+ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+#pragma mark - Private Methods
+
++ (PFFileObject *)_getPFFileFromImage: (UIImage * _Nullable)image {
     if (!image) {
         return nil;
     }
