@@ -15,12 +15,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhoto;
-@property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
 @implementation DetailViewController
+
+#pragma mark - Lifecycle Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,13 +31,13 @@
     [self.imageView loadInBackground];
     self.profilePhoto.layer.cornerRadius = 25;
     self.captionLabel.text = self.post[@"caption"];
-    PFUser *author = self.post[@"author"];
+    PFUser *const author = self.post[@"author"];
     self.usernameLabel.text = author.username;
     
-    NSDate *date = self.post.createdAt;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    NSDate *const date = self.post.createdAt;
+    NSDateFormatter *const dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MM-dd-yyyy"];
-    NSString *dateString = [dateFormatter stringFromDate:date];
+    NSString *const dateString = [dateFormatter stringFromDate:date];
     self.timeLabel.text = dateString;
 }
 

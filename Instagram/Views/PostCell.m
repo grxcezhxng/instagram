@@ -18,19 +18,17 @@
 
 - (void)setCellData {
     _post = self.post;
-    
+
     self.imageView.layer.cornerRadius = 5;
     
-    PFFileObject * postPhoto = self.post.image;
-    NSURL * imageURL = [NSURL URLWithString:postPhoto.url];
-    NSLog(@"Profile photo link: %@", imageURL);
+    PFFileObject *const postPhoto = self.post.image;
+    NSURL *const imageURL = [NSURL URLWithString:postPhoto.url];
     [self.imageView setImageWithURL:imageURL];
     
-    PFUser *author = self.post[@"author"];
+    PFUser *const author = self.post[@"author"];
     
-    PFFileObject * profilePhoto = author[@"profilePhoto"];
-    NSURL * profileImageURL = [NSURL URLWithString:profilePhoto.url];
-    NSLog(@"Profile photo link: %@", profileImageURL);
+    PFFileObject *const profilePhoto = author[@"profilePhoto"];
+    NSURL *const profileImageURL = [NSURL URLWithString:profilePhoto.url];
     [self.profilePhoto setImageWithURL:profileImageURL];
     
     self.profilePhoto.layer.cornerRadius = 25;

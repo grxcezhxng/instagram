@@ -15,5 +15,4 @@
     self.postView.clipsToBounds = YES;
 }
 
-
 @end
